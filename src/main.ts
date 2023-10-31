@@ -5,14 +5,15 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  const config = new DocumentBuilder()
-    .setTitle('Users example')
-    .setDescription('The users API description')
-    .setVersion('1.0')
-    .addTag('users')
+  const configSwagger = new DocumentBuilder()
+    .setTitle('Okten')
+    .setDescription('NestJS API')
+    .setVersion('1.0.0')
+    .addTag('march-2023')
     .build();
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+
+  const documentSwagger = SwaggerModule.createDocument(app, configSwagger);
+  SwaggerModule.setup('api', app, documentSwagger);
 
   await app.listen(3000);
 }
